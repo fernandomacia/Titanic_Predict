@@ -27,4 +27,4 @@ lr_predictions = lr.predict(X_test)
 accuracy = accuracy_score(y_test, lr_predictions)
 print(f'Precisión del modelo: {accuracy:.2f}')
 
-pickle.dump(regressor, open('model.pkl','wb'))
+pickle.dump(lr, open('model.pkl','wb'))

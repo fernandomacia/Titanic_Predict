@@ -27,7 +27,8 @@ def results():
     prediction = model.predict([np.array(list(data.values()))])
 
     output = prediction[0]
-    return jsonify(output)
+    output_serializable = output.tolist()
+    return jsonify(output_serializable)
 
 if __name__ == "__main__":
     app.run(debug=True)
