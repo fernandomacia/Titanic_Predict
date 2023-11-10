@@ -3,23 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Deployment Tutorial 1</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   
 </head>
 
 <body style="background: #000;">
  <div class="login">
-	<h1>Sales Forecasting</h1>
+	<h1>Titanic Passenger Survival Prediction</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="rate" placeholder="rate" required="required" />
-        <input type="text" name="sales in first month" placeholder="sales in first month" required="required" />
-		<input type="text" name="sales in second month" placeholder="sales in second month" required="required" />
+    <form action="{{ url_for('predict')}}" method="post">
+    	<input type="text" name="Pclass" placeholder="Pclass" required="required" />
+      <input type="text" name="Age" placeholder="Age" required="required" />
+      <input type="text" name="SibSp" placeholder="SibSp" required="required" />
+      <input type="text" name="Parch" placeholder="Parch" required="required" />
+      <select name="Embarked" required="required">
+        <option value="" disabled selected>Select One</option>
+        <option value="C">C</option>
+        <option value="Q">Q</option>
+        <option value="S">S</option>
+      </select>
+      <label>
+        <input type="radio" name="Sex" value="female" required="required" /> Female
+      </label>
+      <label>
+        <input type="radio" name="Sex" value="male" required="required" /> Male
+      </label>
 
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict sales in third month</button>
