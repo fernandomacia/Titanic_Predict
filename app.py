@@ -1,5 +1,6 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template, redirect, url_for
 import pickle
 import json
 
@@ -44,7 +45,20 @@ def predict():
   
     output = round(prediction[0], 2)
 
-    return render_template('index.html', prediction_text='Survived = {}'.format(output))
+    if output == 1:
+        return redirect(url_for('survived'))
+    else:
+        return redirect(url_for('not_survived'))
+
+    #return render_template('index.html', prediction_text='Survived = {}'.format(output))
+
+@app.route('/survived')
+def survived():
+    return render_template('survived.html')
+
+@app.route('/not_survived')
+def not_survived():
+    return render_template('not_survived.html')
 
 @app.route('/results',methods=['POST'])
 def results():

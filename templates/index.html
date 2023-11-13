@@ -1,49 +1,53 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Deployment Tutorial 1</title>
-  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Hind:300" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+<body>
+    <div class="collage">
+        <img src="{{ url_for('static', filename='img/imagen2.jpg') }}" alt="Imagen 1" class="collage-image">
+        <img src="{{ url_for('static', filename='img/imagen1.jpg') }}" alt="Imagen 2" class="collage-image">
+        <img src="{{ url_for('static', filename='img/imagen3.jpg') }}" alt="Imagen 3" class="collage-image">
+        <img src="{{ url_for('static', filename='img/imagen4.jpg') }}" alt="Imagen 3" class="collage-image">
+    </div>
+    <div class="form-container">
+    <h1>¿Sobrevives al Titanic?</h1>
+    <form action="{{ url_for('predict')}}" method="POST">
+        
+        <label for="pclass">Clase (1 = 1ra, 2 = 2da, 3 = 3ra):</label>
+        <input type="number" id="pclass" name="Pclass" min="1" max="3" required>
 
-<body style="background: #000;">
- <div class="login">
-	<h1>Titanic Passenger Survival Prediction</h1>
+        <label for="sex">Sexo:</label>
+        <select id="sex" name="Sex" required>
+            <option value="male">Hombre</option>
+            <option value="female">Mujer</option>
+        </select>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}" method="post">
-    	<input type="text" name="Pclass" placeholder="Pclass" required="required" />
-      <input type="text" name="Age" placeholder="Age" required="required" />
-      <input type="text" name="SibSp" placeholder="SibSp" required="required" />
-      <input type="text" name="Parch" placeholder="Parch" required="required" />
-      <select name="Embarked" required="required">
-        <option value="" disabled selected>Select One</option>
-        <option value="C">C</option>
-        <option value="Q">Q</option>
-        <option value="S">S</option>
-      </select>
-      <label>
-        <input type="radio" name="Sex" value="female" required="required" /> Female
-      </label>
-      <label>
-        <input type="radio" name="Sex" value="male" required="required" /> Male
-      </label>
+        <label for="age">Edad:</label>
+        <input type="number" id="age" name="Age" step="0.1" min="1" max="100" required>
 
+        <label for="sibsp">Nº de hermanos / cónyuges a bordo:</label>
+        <input type="number" id="sibsp" name="SibSp" min="0" max="10" required>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict sales in third month</button>
+        <label for="parch">Nº de padres / hijos a bordo: </label>
+        <input type="number" id="parch" name="Parch" min="0" max="10" required>
+
+        <label for="embarked">Puerto de embarque:</label>
+        <select id="embarked" name="Embarked" required>
+            <option value="C">Cherbourg</option>
+            <option value="Q">Queenstown</option>
+            <option value="S">Southampton</option>
+        </select>
+
+        <input type="submit" value="Enviar">
     </form>
-
-   <br>
+    <br>
    <br>
    {{ prediction_text }}
-
- </div>
-
-
+    </div>
+    <!--<audio controls loop>
+        <source src="sound/titanic_meme.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+      </audio>-->
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>No Sobreviviste</title>
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='img/imagen1.jpg') }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: white;">Lo sentimos, no has sobrevivido al Titanic.</h1>
+    <a href="/" style="color: white;">Volver a intentarlo</a>
+
+    <!-- Reproductor de música -->
+    <audio autoplay loop>
+        <source src="{{ url_for('static', filename='sound/titanic_meme.mp3') }}" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+</body>
+</html>
+
